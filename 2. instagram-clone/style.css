@@ -1,0 +1,256 @@
+html {
+  font-size: 16px;
+}
+
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.custom-button {
+  background-color: white;
+  height: 15px;
+  width: 50px;
+  border: 0px;
+  margin: 5px;
+  font-size: 0.8rem;
+  color: #3897f0;
+}
+.round-image {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+}
+.gray {
+  color: #999999;
+}
+.transition-speed {
+  transition: 0.5s;
+}
+
+.navi-wrapper {
+  background-color: white;
+  border-bottom: 1px solid #e6e6e6;
+  height: 76px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+.navi-bar {
+  margin: auto;
+  width: 1010px;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.navi-bar-transition {
+  height: 50px;
+}
+
+.logo-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 200px;
+  height: 50px;
+  align-items: center;
+}
+.logo-image .camera-image {
+  width: 23px;
+  height: 23px;
+  margin: 10px;
+}
+.logo-image .vertical-line {
+  border: 0.5px solid black;
+  width: 0.5px;
+  height: 28px;
+}
+.logo-image .instagram-logo {
+  width: 140px;
+  height: 40px;
+}
+.logo-image-transition {
+  opacity: 0;
+}
+
+.search-input {
+  width: 215px;
+  height: 28px;
+  padding: 7px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300px;
+  border-radius: 3px;
+  border: solid 1px #dbdbdb;
+  background-color: rgb(250, 250, 250);
+}
+::placeholder {
+  color: #999;
+}
+
+.link-image {
+  width: 156px;
+  height: 24px;
+  padding-left: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.link-image img {
+  width: 24px;
+  height: 24px;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.main {
+  width: 935px;
+  padding-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.contents-all {
+  width: 614px;
+  height: 4000px;
+}
+.content {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.header {
+  color: black;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.header__left {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+.header .user-name {
+  margin-left: 10px;
+  color: black;
+  font-weight: 600;
+}
+.header .ellipsis {
+  width: 24px;
+  height: 24px;
+}
+.photo1 {
+  background-image: url("./images/nature1.jpeg");
+  width: 614px;
+  height: 775px;
+}
+.event-mark {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.event-mark img {
+  margin: 7px;
+  width: 24px;
+  height: 24px;
+}
+.content p {
+  margin: 10px 15px;
+  font-size: 0.8rem;
+}
+.content .comment {
+  border-top: 1px solid #e6e6e6;
+  width: 614px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment input {
+  border: 0px;
+  margin: 15px;
+  height: 15px;
+  width: 570px;
+  font-size: 0.8rem;
+}
+
+.aside-all {
+  /* border: 1px solid; */
+  width: 293px;
+  height: 800px;
+  position: sticky;
+  top: 77px;
+  padding: 20px 10px 10px 10px;
+}
+.aside-all__user {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.aside-all__user ul {
+  margin: 10px 0 0 10px;
+}
+.aside-all__story {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  height: 85px;
+  padding: 10px;
+  margin: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-between;
+}
+.aside-all__firends {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  height: 200px;
+  padding: 10px;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.aside-all__firends__title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px;
+}
+.aside-all__firends__friend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+.aside-all__firends__friend .right {
+  width: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.aside-all__reference {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
