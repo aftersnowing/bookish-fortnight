@@ -22,7 +22,7 @@ html * {
 .round-image {
   width: 35px;
   height: 35px;
-  border-radius: 20px;
+  border-radius: 50%;
 }
 .gray {
   color: #999999;
@@ -189,7 +189,6 @@ html * {
 }
 
 .aside-all {
-  /* border: 1px solid; */
   width: 293px;
   height: 800px;
   position: sticky;
