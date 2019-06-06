@@ -1,6 +1,6 @@
 class View {
   constructor() {}
-  excute(input) {
+  execute(input) {
     console.log(input);
   }
 }
