@@ -16,7 +16,7 @@ rl.on("line", function(userInput) {
   }
 
   if (userInput.match(/\d\s\d/) !== null) {
-    pos = userInput.split(" ").map(Number);
+    pos = userInput.split(" ").map(val => parseInt(val) - 1);
     controller.execute(pos);
   } else {
     console.log("올바른 입력을 주세요");
