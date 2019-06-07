@@ -7,6 +7,7 @@ class Model {
     this.whiteStone = 2;
     this.player = this.blackStone;
     this.init();
+    console.log(this.playData);
   }
 
   init() {
@@ -16,15 +17,37 @@ class Model {
     this.playData[4][3] = 1;
   }
 
-  putStone(input) {
-    this.playData[input[0]][input[1]] = this.player;
+  putStone(input, positionArr) {
+    this.updateStone(input);
+    this.changeAdjacentStones(positionArr);
     this.changeTurn();
   }
 
-  changeTurn(player) {
-    player === this.blackStone
-      ? (player = this.whiteStone)
-      : (player = this.blackStone);
+  changeTurn() {
+    this.player === this.blackStone
+      ? (this.player = this.whiteStone)
+      : (this.player = this.blackStone);
+  }
+
+  changeAdjacentStones(arr) {
+    arr.forEach(val => {
+      let tempArr = [];
+      let toggle = 0;
+      val.some(el => {
+        if (el === "mark") {
+          toggle = 1;
+          return true;
+        }
+        tempArr.push(el);
+      });
+      if (toggle) {
+        tempArr.forEach(val => this.updateStone(val));
+      }
+    });
+  }
+
+  updateStone(input) {
+    this.playData[input[0]][input[1]] = this.player;
   }
 }
 module.exports = Model;
