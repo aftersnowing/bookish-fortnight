@@ -18,6 +18,7 @@ class Model {
   }
 
   putStone(input, positionArr) {
+    this.input = input;
     this.updateStone(input);
     this.changeAdjacentStones(positionArr);
     this.changeTurn();
@@ -31,18 +32,9 @@ class Model {
 
   changeAdjacentStones(arr) {
     arr.forEach(val => {
-      let tempArr = [];
-      let toggle = 0;
-      val.some(el => {
-        if (el === "mark") {
-          toggle = 1;
-          return true;
-        }
-        tempArr.push(el);
+      val.forEach(el => {
+        this.updateStone(el);
       });
-      if (toggle) {
-        tempArr.forEach(val => this.updateStone(val));
-      }
     });
   }
 

@@ -9,12 +9,14 @@ class Controller {
   }
 
   execute(input) {
-    if (this.getPositionState(input) === 0) {
-      let position = this.CheckAllDirection();
-      model.putStone(input, position);
-      return this.viewOutput(model.playData);
+    if (this.getPositionState(input) !== 0) {
+      return console.log("이미 돌이 놓여져 있어요");
     }
-    console.log("정말 그 자리가 확실해요? 다시 한번 봐 봐요~");
+    if (this.checkAllDirection()) {
+      return console.log("그 자리는 게임 규칙상 돌을 둘 수 없어요");
+    }
+    model.putStone(input, this.position);
+    return this.viewOutput(model.playData);
   }
 
   viewOutput(input) {
@@ -26,11 +28,12 @@ class Controller {
     return model.playData[input[0]][input[1]];
   }
 
-  CheckAllDirection() {
+  checkAllDirection() {
     let directionsArr = [];
     this.getAllElements(directionsArr);
-    let result = this.getPositionToChange(directionsArr);
-    return result;
+    this.position = this.getPositionToChange(directionsArr);
+
+    return this.isValidPosition(this.position);
   }
 
   getAllElements(arr) {
@@ -56,22 +59,39 @@ class Controller {
   }
 
   getPositionToChange(arr) {
-    let result = arr.map(val => {
+    let tempArr = this.removeEmptyPosition(arr);
+    return this.getValidPostion(tempArr);
+  }
+
+  removeEmptyPosition(arr) {
+    return arr.map(val => {
       let tempArr = [];
       val.some(el => {
         if (el.value === 0) return true;
-        if (el.value === model.player) tempArr.push("mark");
+        if (el.value === model.player) tempArr.push("player");
         if (el.value !== model.player) tempArr.push(el.position);
       });
       return tempArr;
     });
-    return result;
   }
 
-  isCorrectPosition() {}
-  checkSameStone() {}
-  checkDifferentStone() {}
-  isEmptyPosition() {}
+  getValidPostion(arr) {
+    return arr.map(val => {
+      let arr = [];
+      let toggle = 0;
+      val.forEach(el => {
+        if (arr.indexOf("player") === -1) arr.push(el);
+        if (el === "player") toggle = 1;
+      });
+      return toggle === 1 ? arr.slice(0, -1) : [];
+    });
+  }
+
+  isValidPosition(arr) {
+    return !arr.some(val => {
+      return val.length > 0;
+    });
+  }
 }
 
 module.exports = Controller;
