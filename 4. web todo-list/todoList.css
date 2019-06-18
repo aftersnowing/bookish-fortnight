@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+
+img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+header {
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+h1 {
+  font-size: 60px;
+  text-align: center;
+  color: #30302e;
+}
+input {
+  font-size: 20px;
+  height: 40px;
+  width: 400px;
+}
+
+.main-contents-wrapper {
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+.main-content {
+  background-image: url(./image/image2.jpeg);
+  width: 25%;
+  height: 50rem;
+  overflow: auto;
+  border-radius: 10px;
+}
+.main-content p {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 3rem;
+  color: #30302e;
+}
+.main-content .line {
+  border-top: 1px solid #30302e;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.main-content .todo-item {
+  font-size: 2rem;
+  padding: 0.5rem 2rem;
+  word-break: normal;
+}
+
+.todo-item {
+  cursor: pointer;
+  position: relative;
+}
+.del-button {
+  position: absolute;
+  left: 27rem;
+  top: 0.5rem;
+  visibility: hidden;
+  background-color: white;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.visible {
+  visibility: visible;
+}
