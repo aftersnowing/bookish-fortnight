@@ -14,6 +14,7 @@ class UpdateAndRemoveTodo {
       }
     });
   }
+
   makeTextNode(input) {
     let todoItem = document.createElement("li");
     let todoNode = document.createTextNode(input);
@@ -22,10 +23,12 @@ class UpdateAndRemoveTodo {
     todoItem.classList.add("todo-item");
     return todoItem;
   }
+
   insertDeleteButton(node) {
     let template = `<button class="del-button">X</button>`;
     node.insertAdjacentHTML("beforeend", template);
   }
+
   addDeleteButtonEvent(node) {
     node.addEventListener("mouseover", () => {
       node.children[0].classList.add("visible");
@@ -37,11 +40,59 @@ class UpdateAndRemoveTodo {
       node.parentNode.removeChild(node);
     });
   }
+
   insertNode(node) {
     this.todoList.appendChild(node);
     this.inputBox.value = "";
   }
 }
 
-const addTodo = new UpdateAndRemoveTodo();
-addTodo.AddTextEvent();
+class DragAdndropEvent {
+  constructor() {}
+  DragEvent() {
+    let dragged;
+
+    document.addEventListener(
+      "dragstart",
+      function(event) {
+        dragged = event.target;
+        event.target.style.opacity = 0.5;
+      },
+      false
+    );
+
+    document.addEventListener(
+      "dragend",
+      function(event) {
+        event.target.style.opacity = "";
+      },
+      false
+    );
+
+    document.addEventListener(
+      "dragover",
+      function(event) {
+        event.preventDefault();
+      },
+      false
+    );
+
+    document.addEventListener(
+      "drop",
+      function(event) {
+        event.preventDefault();
+        if (event.target.classList.contains("main-content")) {
+          event.target.style.background = "";
+          dragged.parentNode.removeChild(dragged);
+          event.target.appendChild(dragged);
+        }
+      },
+      false
+    );
+  }
+}
+
+const updateAndRemoveTodo = new UpdateAndRemoveTodo();
+const dragAnddropEvent = new DragAdndropEvent();
+updateAndRemoveTodo.AddTextEvent();
+dragAnddropEvent.DragEvent();
