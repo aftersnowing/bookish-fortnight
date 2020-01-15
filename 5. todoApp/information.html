@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="info.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  </head>
+  <body ng-app="mainApp" ng-controller="mainController">
+    <div class="wrapper">
+      <div class="information-date">
+        target date: {{ todoArr[0].info[0] }} ~ {{ todoArr[0].info[1] }}
+      </div>
+      <div class="information-remark">remark: {{ todoArr.info[2] }}</div>
+      <div class="information-priority">priority: {{ todoArr.info[3] }}</div>
+    </div>
+    <script src="mainController.js"></script>
+  </body>
+</html>

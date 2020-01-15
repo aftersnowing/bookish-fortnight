@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body ng-app="mainApp">
+    <div class="main-contents-wrapper">
+      <div class="todo-title">Todo lists</div>
+      <div class="todo-line"></div>
+      <div class="todo-wrapper" ng-controller="mainController">
+        <div class="todo-status">
+          Total {{ calculateRemains() }} / {{ todoArr.length }} todos
+          <input type="submit" value="done 삭제" ng-click="deleteTodo()" />
+        </div>
+        <ul class="todo-list-wrapper">
+          <li class="todo-list" ng-repeat="todo in todoArr">
+            <input type="checkbox" ng-model="todo.isDone" />
+            <span
+              class="todo-list-title-{{ todo.isDone }}"
+              ng-click="createSubWindow();storeCurrentIndex($index)"
+            >
+              {{ todo.todoText }}
+            </span>
+            <span class="todo-list-extension-false" ng-click="createInfoWindow()">
+              <button type="button">more</button>
+            </span>
+          </li>
+        </ul>
+        <div class="input-wrapper">
+          <form ng-submit="addTodo()">
+            <input
+              class="todo-input"
+              ng-model="todoText"
+              type="text"
+              placeholder="할일을 추가하세요"
+            />
+            <input class="todo-submit" type="submit" value="추가" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="mainController.js"></script>
+  </body>
+</html>
