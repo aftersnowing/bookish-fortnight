@@ -16,3 +16,12 @@
 
   3. othello게임 만들기
      - 현재 구현중입니다.
+
+  4. web todo-list
+     - HTML, CSS, javascript를 가지고 todo list를 만들었습니다.
+  
+  5. todoApp
+     - 일렉트론과 angularJS(회사 기술스택...ㅜ)을 가지고 공부목적으로 desktop todo app을 만들었습니다.
+
+  6. API authentication(인증) toy project
+     - 제가 API 통신에 대해서 이해하기 위해서 만들어본 작은 toy 프로젝트입니다.
