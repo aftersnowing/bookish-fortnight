@@ -1,0 +1,19 @@
+{
+  "FilePath": "c:\\Users\\gurck\\Desktop\\my-toy\\6. API authentication toy\\server_side\\HMACTESTProject\\HMACTESTProject\\HMACTESTProject.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}
