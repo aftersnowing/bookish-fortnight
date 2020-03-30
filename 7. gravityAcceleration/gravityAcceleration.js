@@ -1,33 +1,46 @@
 const target = 100;
-const g = 9.81;
+const g = 10;
 let intervalId = undefined;
 let totalTime = 0;
-let firstBounceTime = 0;
-let unitTime = 1;
+let unitTime = 0.1;
+let initialPosition = 0;
 let v = 0;
 let h = 0;
 let pixel = 0;
-let count = 0;
+let toggle = true;
 
 function getGravityAcceleration() {
-  if (target <= totalTime) {
-    return clearInterval(intervalId);
+  if (toggle) {
+    totalTime += unitTime;
+    v = g * totalTime;
+    h = g * Math.pow(totalTime, 2);
+    pixel = initialPosition + (600 / Math.pow(10, 2)) * Math.pow(totalTime, 2);
+    updateDom();
+    if(pixel >= 599) {
+      initialPosition = pixel;
+      totalTime = 0.7 * totalTime;
+      return toggle = !toggle;
+    }
   }
-  count++;
-  totalTime += unitTime;
-  h = Math.pow(totalTime, 2);
-  v = g * totalTime;
-  syncronizePixel();
-  updateDom();
-  console.log(Math.pow(totalTime, 2) - Math.pow(totalTime - 1, 2));
-}
 
-function getBounce() {
-  pixel = 600 - (600 / Math.pow(target, 2)) * Math.pow(totalTime, 2);
+  if (!toggle) {
+    totalTime -= unitTime;
+    v = g * totalTime;
+    h = h - v * unitTime;
+    pixel = 600 - v * unitTime;
+    updateDom();
+
+    if(v <= 1){
+      initialPosition = pixel;
+      totalTime = 0;
+      toggle = !toggle;
+    }
+
+    if(pixel > 590) return clearInterval(intervalId);
+  }
 }
 
 function syncronizePixel() {
-  pixel = (600 / Math.pow(target, 2)) * Math.pow(totalTime, 2);
 }
 
 function runSetInterval(callback, time) {
@@ -38,13 +51,13 @@ function updateDom() {
   document.getElementsByClassName("velocity")[0].innerText = v.toFixed(2);
   document.getElementsByClassName("distance")[0].innerText = h.toFixed(2);
   document.getElementsByClassName(
-    "ball-container"
+    "ball"
   )[0].style.transform = `translateY(${pixel}px)`;
 }
 
 const button = document.getElementById("button");
 button.addEventListener(
   "click",
-  runSetInterval.bind(null, getGravityAcceleration, 9),
+  runSetInterval.bind(null, getGravityAcceleration, 10),
   false
 );
