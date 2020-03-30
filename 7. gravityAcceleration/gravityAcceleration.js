@@ -1,65 +1,50 @@
-const target = 10000;
+const target = 100;
 const g = 9.81;
 let intervalId = undefined;
-let count = 0;
-let t = 0;
+let totalTime = 0;
+let firstBounceTime = 0;
+let unitTime = 1;
 let v = 0;
 let h = 0;
+let pixel = 0;
+let count = 0;
 
 function getGravityAcceleration() {
-  let unitTime = 0.1;
-  if (h < target) {
-    count++;
-    t += unitTime;
-    v += g * unitTime;
-    h += v * unitTime;
-    updateDom(v, h);
+  if (target <= totalTime) {
+    return clearInterval(intervalId);
   }
-
-  // console.log(
-  //   "first /",
-  //   "time:",
-  //   t,
-  //   "velocity:",
-  //   v,
-  //   "target",
-  //   target,
-  //   "h:",
-  //   h,
-  //   "count:",
-  //   count
-  // );
+  count++;
+  totalTime += unitTime;
+  h = Math.pow(totalTime, 2);
+  v = g * totalTime;
+  syncronizePixel();
+  updateDom();
+  console.log(Math.pow(totalTime, 2) - Math.pow(totalTime - 1, 2));
 }
-function getGravityAcceleration_2() {
-  const i = 250;
-  if (h > target - 1) return clearInterval(intervalId);
-  h = h + target / i;
-  v = Math.sqrt(2 * g * h);
-  updateDom(v, h);
 
-  // console.log("second /", "velocity:", v);
+function getBounce() {
+  pixel = 600 - (600 / Math.pow(target, 2)) * Math.pow(totalTime, 2);
 }
-// getGravityAcceleration(1000, 500);
-// getGravityAcceleration_2(1000, 500);
+
+function syncronizePixel() {
+  pixel = (600 / Math.pow(target, 2)) * Math.pow(totalTime, 2);
+}
 
 function runSetInterval(callback, time) {
   intervalId = setInterval(callback, time);
 }
 
-function updateDom(v, h) {
+function updateDom() {
   document.getElementsByClassName("velocity")[0].innerText = v.toFixed(2);
-  document.getElementsByClassName("distance")[0].innerText = h;
-}
-
-function clickButton(e) {
-  const ball = document.getElementsByClassName("ball-container");
-  ball[0].classList.add("movement");
+  document.getElementsByClassName("distance")[0].innerText = h.toFixed(2);
+  document.getElementsByClassName(
+    "ball-container"
+  )[0].style.transform = `translateY(${pixel}px)`;
 }
 
 const button = document.getElementById("button");
-button.addEventListener("click", clickButton, false);
 button.addEventListener(
   "click",
-  runSetInterval.bind(null, getGravityAcceleration_2, 1),
+  runSetInterval.bind(null, getGravityAcceleration, 9),
   false
 );

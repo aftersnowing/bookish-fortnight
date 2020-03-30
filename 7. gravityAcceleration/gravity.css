@@ -28,21 +28,19 @@
     justify-content: space-between;
     align-items: center;
     max-width: 150px;
-    transition: all 1s ease-in;
+    /* transition: all 1s ease-in; */
 }
 .ball{
-    /* position: relative;
-    left:450px;
-    bottom:-100px; */
     min-height: 70px;
     min-width: 70px;
     border: 1px solid black;
     border-radius : 70px;
-    transition: all 1s ease-in;
 }
-.movement {
-    top:700px;
-}
+/* .movement {
+    animation-name: movement;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+} */
 
 .ground{
     width: 100%;
@@ -57,4 +55,27 @@
     cursor: pointer;
 }
 
-
+/* @keyframes movement{
+    0%{
+        animation-timing-function: ease-in;
+    }
+    25% {
+        transform: translateY(600px);
+        animation-timing-function: ease-out;
+    }
+    50%{
+        transform: translateY(400px);
+        animation-timing-function: ease-in;
+    }
+    65%{
+        transform: translateY(600px);
+        animation-timing-function: ease-out;
+    }
+    90%{
+        transform: translateY(500px);
+        animation-timing-function: ease-in;
+    }
+    100%{
+        transform: translateY(600px);
+    }
+} */
