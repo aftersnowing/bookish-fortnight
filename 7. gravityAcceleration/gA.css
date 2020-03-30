@@ -1,0 +1,97 @@
+/* * {
+  border: 1px solid
+} */
+
+.wrapper {
+  width:100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+}
+.container{
+  width: 80%;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
+.upper-wrapper{
+  display:flex;
+  align-items: center;
+}
+.ball-wrapper{
+  display:flex;
+  align-items: center;
+}
+.button {
+  width: 70px;
+  height:30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid;
+}
+.ball {
+  height:50px;
+  width:50px;
+  border-radius: 50px;
+  border: 1px solid black;
+}
+.ball-information{
+  padding: 0 0 0 10px;
+}
+.velocity-wrapper{
+  display:flex;
+}
+.distance-wrapper{
+  display:flex;
+}
+
+.line-wrapper{
+  width:100%;
+  height:80%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.vert-line {
+  border-right: 3px solid black;
+  height: 100%;
+  width:0;
+  position: relative;
+}
+.horiz-line {
+  border-top: 3px solid black;
+  height: 0; 
+  width: 100%;
+}
+
+.move-down{
+  animation-name: ball;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+}
+
+@keyframes ball{
+  30% {
+    transform:translateY(80vh);
+  }
+  50%{
+    transform: translateY(50vh);
+  }
+  70%{
+    transform: translateY(80vh);
+  }
+  90%{
+    transform: translateY(70vh);
+  }
+  100%{
+    transform: translateY(80vh);
+  }
+
+}
