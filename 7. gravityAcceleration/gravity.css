@@ -31,10 +31,12 @@
     /* transition: all 1s ease-in; */
 }
 .ball{
+    position: relative;
     min-height: 70px;
     min-width: 70px;
     border: 1px solid black;
     border-radius : 70px;
+    /* transition: 0.01s; */
 }
 /* .movement {
     animation-name: movement;
@@ -42,6 +44,9 @@
     animation-fill-mode: forwards;
 } */
 
+.top{
+    top: 600px;
+}
 .ground{
     width: 100%;
     border-top: 3px solid black;
