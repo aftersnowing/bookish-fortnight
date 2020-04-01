@@ -28,7 +28,7 @@ function dropBall() {
 }
 
 function bounceBall() {
-  v = v -  g * unitTime;
+  v = v - g * unitTime;
   h = h + getDeltaY();
   pixel = pixel - getDeltaY();
   renderDom();
@@ -75,7 +75,7 @@ function renderDom() {
 }
 
 function runSetInterval(callback, time) {
-  if(!intervalId) intervalId = setInterval(callback, time);
+  if (!intervalId) intervalId = setInterval(callback, time);
 }
 
 function stopSetInterval() {
@@ -83,14 +83,28 @@ function stopSetInterval() {
   intervalId = null;
 }
 
-document.getElementById("button").addEventListener(
-  "click",
-  runSetInterval.bind(null, startGravityAcceleration, 0),
-  false
-);
+function renewValues() {
+  clearInterval(intervalId);
+  v = 0;
+  h = 600;
+  pixel = 0;
+  toggle = true;
+  intervalId = null;
+  renderDom();
+}
 
-document.getElementById("button_2").addEventListener(
-  "click",
-  stopSetInterval,
-  false
-);
+document
+  .getElementById("button")
+  .addEventListener(
+    "click",
+    runSetInterval.bind(null, startGravityAcceleration, 0),
+    false
+  );
+
+document
+  .getElementById("button_2")
+  .addEventListener("click", stopSetInterval, false);
+
+document
+  .getElementById("button_3")
+  .addEventListener("click", renewValues, false);
