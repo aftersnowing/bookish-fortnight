@@ -1,4 +1,5 @@
 let apiKeys = null;
+let sharedKey = "=AAMAcDAyAQNAMDAwAAM"
 
 function generateHMAC(sharedKey) {
   const timeStamp = Math.floor(new Date().getTime() / 1000).toString();
@@ -21,12 +22,12 @@ function httpGet(url) {
   return xmlHttp.responseText;
 }
 
-generateHMAC("POSSM");
-httpGet("http://127.0.0.1:57412/HMACTEST");
+generateHMAC(sharedKey);
+// httpGet("http://127.0.0.1:57412/HMACTEST");
 
 document
   .getElementById("Renew")
-  .addEventListener("click", () => generateHMAC("POSSM"));
+  .addEventListener("click", () => generateHMAC(sharedKey));
 document
   .getElementById("Request")
   .addEventListener("click", () => httpGet("http://127.0.0.1:57412/HMACTEST"));
